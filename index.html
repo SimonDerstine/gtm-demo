@@ -24,12 +24,17 @@
     <h1>GTM Demo</h1>
     <p>If you can read this, the page is loading.</p>
 
-    <!--Reads the query string -->
+    <!--Reads the query string and logs it to the console-->
     <script>
         const params = new URLSearchParams(window.location.search);
         const key = params.get("key");
         const value = params.get("value");
-        console.log("querystring:", {key, value});
+
+        window.datalayer = window.datalayer || [];
+        window.datalayer.push({ event: "querystring_captured", key, value });
+       
+        console.log("querystring:", {key, value});  
+        console.log("datalayer latest:", window.datalayer[window.datalayer.length - 1]);
     </script>
 
   </body>
