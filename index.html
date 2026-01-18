@@ -62,7 +62,7 @@
           console.log("Using:", { key: captured.key, value: captured.value });
 
           // build the API URL 
-          const apiUrl = `https://httpbin.org/get?${encodeURIComponent(captured.key)}=${encodeURIComponent(captured.value)}`;
+          const apiUrl = `https://httpbin.org/get?key=${encodeURIComponent(captured.key)}&value=${encodeURIComponent(captured.value)}`;
             console.log("Request URL:", apiUrl);
  
         });
