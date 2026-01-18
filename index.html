@@ -30,11 +30,11 @@
         const key = params.get("key");
         const value = params.get("value");
 
-        window.datalayer = window.datalayer || [];
-        window.datalayer.push({ event: "querystring_captured", key, value });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "querystring_captured", key, value });
        
         console.log("querystring:", {key, value});  
-        console.log("datalayer latest:", window.datalayer[window.datalayer.length - 1]);
+        console.log("dataLayer latest:", window.dataLayer[window.dataLayer.length - 1]);
     </script>
 
   </body>
