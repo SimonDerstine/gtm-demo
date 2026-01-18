@@ -37,23 +37,32 @@
         window.dataLayer.push({ event: "querystring_captured", key, value });
        
         console.log("querystring:", {key, value});  
-        console.log("dataLayer latest:", window.dataLayer[window.dataLayer.length - 1]);
     </script>
 
-    <!--When API button is clicked, retrieve and validate the most recent dataLayer entry -->
+    <!--When API button is clicked, find the querystring_captured event in the dataLayer -->
     <script>
-        document.getElementById("apiBtn").addEventListener("click", () => {
-            const last = window.dataLayer && window.dataLayer[window.dataLayer.length -1];
-            console.log("Last dataLayer item:", last);
-
-            if (!last || !last.key || !last.value) {
-                console.log("No key/value found in dataLayer");
-                return;
+        document.getElementById("apiBtn").addEventListener("click", function () {
+          var dl = window.dataLayer || [];
+          var captured = null;
+      
+          for (var i = dl.length - 1; i >= 0; i--) {
+            if (dl[i] && dl[i].event === "querystring_captured") {
+              captured = dl[i];
+              break;
             }
-
-            console.log("Using:", { key: last.key, value: last.value});
+          }
+      
+          console.log("Found captured item:", captured);
+      
+          if (!captured || !captured.key || !captured.value) {
+            console.log("No key/value found");
+            return;
+          }
+      
+          console.log("Using:", { key: captured.key, value: captured.value });
         });
-    </script>
+      </script>
+      
   
   </body>
 </html>
