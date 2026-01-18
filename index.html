@@ -48,6 +48,7 @@
 
             if (!last || !last.key || !last.value) {
                 console.log("No key/value found in dataLayer");
+                return;
             }
 
             console.log("Using:", { key: last.key, value: last.value});
