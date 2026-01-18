@@ -27,7 +27,7 @@
     <!--Button to trigger API request test-->
     <button id="apiBtn">Send API Request</button>
 
-    <!--Reads the query string and logs it to the console-->
+    <!--Reads the query string, pushes to dataLayer, and logs it to the console-->
     <script>
         const params = new URLSearchParams(window.location.search);
         const key = params.get("key");
@@ -60,6 +60,11 @@
           }
       
           console.log("Using:", { key: captured.key, value: captured.value });
+
+          // build the API URL 
+          const apiUrl = `https://httpbin.org/get?${encodeURIComponent(captured.key)}=${encodeURIComponent(captured.value)}`;
+            console.log("Request URL:", requestUrl);
+ 
         });
       </script>
       
