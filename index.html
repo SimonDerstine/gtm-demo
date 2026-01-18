@@ -13,9 +13,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GTM Demo</title>
-  </head>
+  </head>  
+  
   <body>
-
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WW92BWB"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -23,6 +23,9 @@
 
     <h1>GTM Demo</h1>
     <p>If you can read this, the page is loading.</p>
+    
+    <!--Button to trigger API request test-->
+    <button id="apiBtn">Send API Request</button>
 
     <!--Reads the query string and logs it to the console-->
     <script>
@@ -37,6 +40,13 @@
         console.log("dataLayer latest:", window.dataLayer[window.dataLayer.length - 1]);
     </script>
 
+    <!--When the API button is clicked, log the event to the console -->
+    <script>
+        document.getElementById("apiBtn").addEventListener("click", () => {
+        console.log("Button clicked");
+        });
+    </script>
+  
   </body>
 </html>
 
