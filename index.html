@@ -40,10 +40,17 @@
         console.log("dataLayer latest:", window.dataLayer[window.dataLayer.length - 1]);
     </script>
 
-    <!--When the API button is clicked, log the event to the console -->
+    <!--When API button is clicked, retrieve and validate the most recent dataLayer entry -->
     <script>
         document.getElementById("apiBtn").addEventListener("click", () => {
-        console.log("Button clicked");
+            const last = window.dataLayer && window.dataLayer[window.dataLayer.length -1];
+            console.log("Last dataLayer item:", last);
+
+            if (!last || !last.key || !last.value) {
+                console.log("No key/value found in dataLayer");
+            }
+
+            console.log("Using:", { key: last.key, value: last.value});
         });
     </script>
   
