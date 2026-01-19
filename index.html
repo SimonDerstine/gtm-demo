@@ -64,7 +64,16 @@
           // build the API URL 
           const apiUrl = `https://httpbin.org/get?key=${encodeURIComponent(captured.key)}&value=${encodeURIComponent(captured.value)}`;
             console.log("Request URL:", apiUrl);
- 
+
+          // Make HTTP GET request to the API endpoint
+          fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log("API response:", data);
+            })
+            .catch(err => {
+                console.error("API error:", err);
+            });
         });
       </script>
       
